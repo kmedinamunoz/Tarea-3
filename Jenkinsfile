@@ -1,5 +1,10 @@
 pipeline {
-    agent any
+    agent { dockerfile true
+        // dockerfile {
+        //     image ''
+        //     args '--mount type=volume,src=jenkins_tarea3,dst=/tmp'
+        // }
+    }
 
     stages {
         stage('Install Dependencies') {
@@ -14,11 +19,11 @@ pipeline {
             }
         }
 
-        stage('Sonar Scanner') {
-            steps {
-                sh 'npm run sonar'
-            }
-        }
+//         stage('Sonar Scanner') {
+//             steps {
+//                 sh 'npm run sonar'
+//             }
+//         }
 
         stage('Build Application') {
             steps {
@@ -28,7 +33,7 @@ pipeline {
       
         stage('Deploy Application') {
             steps {
-                sh 'cp dist/clase5-demo/* /var/www/html/'
+                sh 'cp dist/tarea3/* /tmp/'
             }
         }
     }
