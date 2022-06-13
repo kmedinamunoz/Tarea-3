@@ -1,5 +1,5 @@
 pipeline {
-    agent { dockerfile true
+    agent { Dockerfile true
         // dockerfile {
         //     image ''
         //     args '--mount type=volume,src=jenkins_tarea3,dst=/tmp'
