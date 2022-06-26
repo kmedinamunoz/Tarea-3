@@ -21,17 +21,17 @@ pipeline {
             }
         }
 
-        stage('Lint Test Execution') {
-            steps {
-                sh 'npm run lint'
-            }
-        }
-
-        // stage('Unit Test Execution') {
+        // stage('Lint Test Execution') {
         //     steps {
-        //         sh 'npm run test'
+        //         sh 'npm run lint'
         //     }
         // }
+
+        stage('Unit Test Execution') {
+            steps {
+                sh 'npm run test'
+            }
+        }
 
         // stage('Sonar Execution') {
         //     steps {
