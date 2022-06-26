@@ -1,40 +1,62 @@
 pipeline {
-    agent { Dockerfile true
-        // dockerfile {
-        //     image ''
-        //     args '--mount type=volume,src=jenkins_tarea3,dst=/tmp'
-        // }
-    }
-
+    agent any
+  
     stages {
-        stage('Install Dependencies') {
+        stage('Angular Verification') {
             steps {
-                sh 'npm install'
+                sh "ng version"
+            }
+        }
+        
+        stage('Dependencies Installation') {
+            steps {
+                sh "npm install"
             }
         }
 
-        stage('Unit Test') {
+        stage('Lint Test Execution') {
             steps {
-                echo 'Ejecutando Unit Test'
+                sh "npm run lint"
             }
         }
 
-//         stage('Sonar Scanner') {
-//             steps {
-//                 sh 'npm run sonar'
-//             }
-//         }
-
-        stage('Build Application') {
+        stage('Unit Test Execution') {
             steps {
-                sh 'npm run build'
+                sh "npm run test"
             }
         }
-      
+
+        stage('Sonar Execution') {
+            steps {
+                withSonarQubeEnv('sq-1'){
+                    sh "npm run sonar"
+                }
+            }
+        }
+
+        stage('Quality Gate Validation') {
+            steps {
+                waitForQualityGate abortPipeline: true
+            }
+        }
+
+        stage('Build Execution') {
+            steps {
+                sh "npm run build"
+            }
+        }
+        
         stage('Deploy Application') {
             steps {
-                sh 'cp dist/tarea3/* /tmp/'
+                sh "cp dist/clase6/* /var/www/html"
             }
+        }
+
+    }
+
+    post {
+        always {
+            cleanWs()
         }
     }
 }
