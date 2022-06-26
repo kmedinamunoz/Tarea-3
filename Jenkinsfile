@@ -11,7 +11,7 @@ pipeline {
         
         stage('Steps with Node') {
             agent {
-                docker { image 'node:lts-bullseye-slim' }
+                docker { image 'node:latest' }
             }
             stages{
                 stage('Dependencies Installation') {
