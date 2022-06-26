@@ -17,6 +17,7 @@ pipeline {
                 stage('Dependencies Installation') {
                     steps {
                         sh "node --version"
+                        sh "npm --version"
                     }
                 }
             }
