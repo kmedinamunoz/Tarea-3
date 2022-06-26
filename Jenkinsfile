@@ -8,11 +8,15 @@ pipeline {
             }
         }
         
-    //     stage('Dependencies Installation') {
-    //         steps {
-    //             sh "npm install"
-    //         }
-    //     }
+        
+        stage('Dependencies Installation') {
+            agent {
+                docker { image 'node:16.13.1-alpine' }
+            }
+            steps {
+                sh "npm install"
+            }
+        }
 
     //     stage('Lint Test Execution') {
     //         steps {
@@ -52,7 +56,7 @@ pipeline {
     //         }
     //     }
 
-    // }
+    }
 
     post {
         always {
