@@ -9,13 +9,17 @@ pipeline {
         }
         
         
-        stage('Dependencies Installation') {
+        stage('Node Steps') {
             agent {
                 docker { image 'node:16.13.1-alpine' }
             }
-            steps {
-                sh "npm install"
-            }
+            stages{
+                stage('Dependencies Installation') {
+                    steps {
+
+                        // sh "npm install"
+                    }
+                }
         }
 
     //     stage('Lint Test Execution') {
