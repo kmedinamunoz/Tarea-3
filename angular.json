@@ -3,7 +3,7 @@
   "version": 1,
   "newProjectRoot": "tarea-3",
   "projects": {
-    "clase6": {
+    "tarea-3": {
       "projectType": "application",
       "schematics": {
         "@schematics/angular:application": {
