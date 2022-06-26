@@ -2,7 +2,7 @@ pipeline {
     agent any
   
     stages {
-        stage('Angular Verification') {
+        stage('Angular Version') {
             steps {
                 sh "ng version"
             }
@@ -11,7 +11,7 @@ pipeline {
         
         stage('Steps with Node') {
             agent {
-                docker { image 'node:latest' }
+                docker { image 'node:16.15.1-alpine' }
             }
             stages{
                 stage('Dependencies Installation') {
