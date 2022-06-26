@@ -20,6 +20,7 @@ pipeline {
                         // sh "npm install"
                     }
                 }
+            }
         }
 
     //     stage('Lint Test Execution') {
@@ -59,7 +60,6 @@ pipeline {
     //             sh "cp dist/tarea-3/* /var/www/html"
     //         }
     //     }
-
     }
 
     post {
