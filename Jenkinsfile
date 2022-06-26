@@ -15,10 +15,10 @@ pipeline {
             }
         }
 
-            // stage('Install Dependencies') {
-            //     steps {
-            //         sh "nmp install"
-            //     }
-            // }
+        stage('Install Dependencies') {
+            steps {
+                sh "nmp install"
+            }
+        }
     }
 }
