@@ -4,7 +4,7 @@ pipeline {
     stages {
         stage('Angular Version') {
             steps {
-                sh "ng version"
+                sh 'ng version'
             }
         }
         
@@ -17,7 +17,7 @@ pipeline {
 
         stage('Install Dependencies') {
             steps {
-                sh "npm install"
+                sh 'npm install'
             }
         }
     }
