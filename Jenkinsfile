@@ -8,22 +8,18 @@ pipeline {
             }
         }
         
-        stages {
-            agent {
-                docker { image 'node:16.15.1-alpine' }
+        stage('Versions') {
+            steps {
+                sh 'node --version'
+                sh 'npm --version'
             }
-            stage('Versions') {
-                steps {
-                    sh 'node --version'
-                    sh 'npm --version'
-                }
-            }
+        }
 
-            stage('Install Dependencies') {
-                steps {
-                    sh "nmp install"
-                }
-            }
+            // stage('Install Dependencies') {
+            //     steps {
+            //         sh "nmp install"
+            //     }
+            // }
         }
     }
 }
